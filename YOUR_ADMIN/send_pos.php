@@ -404,7 +404,7 @@ function zen_get_products_manufacturers_name($product_id) {
                     $countproducts++;
                     $rowcp->MoveNext();
                 }
-                //wybieranie addressu pczty email poddostawcy
+                // select the email address of the sub-supplier
                 $dlaemaila = ($tmpt[0][0] != '0') ? $tmpt[0][0] : 0;
                 $subcontractor = $db->Execute("SELECT * FROM " . TABLE_SUBCONTRACTORS_SHIPPING . " WHERE subcontractors_id='$dlaemaila'");
                 $addressdo = $subcontractor->fields['email_address'];
@@ -702,7 +702,6 @@ function zen_get_products_manufacturers_name($product_id) {
                     $row2query .= " " . $zmienna2 . " " . $zmienna1 . " " . $zmienna3 . " " . "ORDER BY orders_id DESC";
                     $row2 = $db->Execute($row2query); 
 
-//wyswietlanie danych
                     $i = 1;
                     while (!$row2->EOF) {
                         $row3 = $db->Execute("SELECT * FROM " . TABLE_ORDERS . " as o, " . TABLE_ORDERS_PRODUCTS . " as p WHERE o.orders_id = o.orders_id AND o.orders_id=" . (int)$row2->fields['orders_id']);
@@ -803,7 +802,7 @@ function zen_get_products_manufacturers_name($product_id) {
 
 
             } else {
-//generowanie szablonu dla nie wysllanych numerow po
+               // Generate a template for non-sent numbers
                 ?>
                 <table border="0" width="100%" align="center" cellspacing="0" cellpadding="0">
                     <tr class="dataTableHeadingRow">

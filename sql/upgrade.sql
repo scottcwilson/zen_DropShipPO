@@ -52,6 +52,21 @@ INSERT IGNORE INTO admin_pages (page_key,language_key,main_page,page_params,menu
 	('dropshipsetsubs','BOX_TOOLS_SET_SUBCONTRACTORS','FILENAME_SET_SUBCONTRACTORS','', 'tools', 'Y', @poid),
 	('configDropShip','BOX_CONFIGURATION_DROPSHIP','FILENAME_CONFIGURATION',CONCAT('gID=',@poid),'configuration','Y',@poid);
 
+CREATE TABLE IF NOT EXISTS `subcontractors_shipping` (
+  `subcontractors_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `alias` varchar(30) NOT NULL DEFAULT '',
+  `name` varchar(100) NOT NULL DEFAULT '',
+  `street1` varchar(100) NOT NULL DEFAULT '',
+  `city` varchar(255) NOT NULL DEFAULT '',
+  `state` varchar(255) NOT NULL DEFAULT '',
+  `zip` varchar(10) NOT NULL DEFAULT '',
+  `country` int(11) NOT NULL DEFAULT '223',
+  `email_address` varchar(100) NOT NULL DEFAULT '',
+  `telephone` varchar(32) NOT NULL DEFAULT '',
+  `contact_person` varchar(100) NOT NULL DEFAULT '',
+  `pickup_restrictions` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`subcontractors_id`)
+);
 
 CREATE TABLE IF NOT EXISTS `subcontractors_to_admins` (
   `s2cid` int(10) unsigned NOT NULL AUTO_INCREMENT,
