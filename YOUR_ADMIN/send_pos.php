@@ -118,7 +118,7 @@ function zen_get_products_manufacturers_name($product_id) {
            $db->Execute("INSERT INTO " . TABLE_ORDERS_STATUS_HISTORY . "
                        (orders_status_id, orders_id, date_added,
                                 customer_notified, comments)
-                          values ('" . POST_SEND_ORDER_STATUS . "','$tm1',now(),'0','" . PO_SENT_COMMENTS . "')");
+                          values ('" . POST_SEND_ORDER_STATUS . "','$tm1',now(),'0','" . zen_db_input(PO_SENT_COMMENTS) . "')");
            $db->Execute("UPDATE " . TABLE_ORDERS . " SET orders_status = '" . POST_SEND_ORDER_STATUS . "', last_modified = now() WHERE orders_id = " . $tm1);
        }
     }
@@ -471,7 +471,7 @@ function zen_get_products_manufacturers_name($product_id) {
                        $db->Execute("INSERT INTO " . TABLE_ORDERS_STATUS_HISTORY . "
                                    (orders_status_id, orders_id, date_added,
                                             customer_notified, comments)
-                                      values ('" . POST_SEND_ORDER_STATUS . "','$tm1',now(),'0','" . PO_SENT_COMMENTS . "')");
+                                      values ('" . POST_SEND_ORDER_STATUS . "','$tm1',now(),'0','" . zen_db_input(PO_SENT_COMMENTS) . "')");
                        $db->Execute("UPDATE " . TABLE_ORDERS . " SET orders_status = '" . POST_SEND_ORDER_STATUS . "', last_modified = now() WHERE orders_id = " . $tm1);
                    }
                 }
